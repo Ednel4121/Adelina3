@@ -1,0 +1,872 @@
+/* Mga kulay, pagitan at hugis na bumubuo sa visual identity ng buong site. */
+:root {
+  color-scheme: light;
+  --navy-950: #122a26;
+  --navy-900: #193b34;
+  --navy-800: #28564b;
+  --blue-700: #147d68;
+  --blue-600: #22a083;
+  --blue-50: #e8f5f0;
+  --ink: #243631;
+  --muted: #71817b;
+  --line: #e2eae6;
+  --surface: #ffffff;
+  --canvas: #f4f7f5;
+  --shadow-card: 0 8px 26px -12px rgb(26 63 53 / 18%);
+  --shadow-hover: 0 16px 34px -14px rgb(26 63 53 / 25%);
+  --radius-card: 18px;
+  --radius-element: 11px;
+  --transition-base: all 180ms ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Mga default ng dokumento at layout wrapper para sa lahat ng screen size. */
+html {
+  min-width: 320px;
+  background: var(--canvas);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--canvas);
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar at topbar ang permanenteng navigation shell ng mga authenticated page. */
+.sidebar {
+  flex: 0 0 264px;
+  padding: 30px 18px;
+  color: #f8fafc;
+  background:
+    radial-gradient(ellipse at 10% 0%, rgb(54 133 108 / 23%), transparent 34%),
+    linear-gradient(180deg, #193b34 0%, #122a26 100%);
+  box-shadow: 8px 0 30px rgb(18 42 38 / 8%);
+}
+
+.brand {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  gap: 12px;
+  margin: 0 8px 34px;
+  font-size: 1.04rem;
+  line-height: 1.35;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  color: #ffffff;
+}
+
+.brand::before {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 15%);
+  border-radius: 13px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #36b890, #147d68);
+  content: "A";
+  font-size: 1.1rem;
+  font-weight: 800;
+  box-shadow: 0 5px 14px rgb(20 125 104 / 30%);
+}
+
+.sidebar nav {
+  display: grid;
+  gap: 5px;
+}
+
+.sidebar nav a {
+  padding: 11px 13px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-element);
+  color: #b1c6bf;
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition-base);
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  color: #ffffff;
+  background: rgb(255 255 255 / 7%);
+  border-color: rgb(255 255 255 / 8%);
+}
+
+.sidebar nav a.active {
+  background: linear-gradient(110deg, rgb(54 184 144 / 22%), rgb(54 184 144 / 8%));
+  border-color: rgb(92 211 171 / 22%);
+  box-shadow: inset 3px 0 #55d2a7, 0 5px 14px rgb(8 28 24 / 12%);
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  display: flex;
+  min-height: 76px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 40px;
+  border-bottom: 1px solid var(--line);
+  background: rgb(255 255 255 / 92%);
+  box-shadow: 0 4px 18px rgb(26 63 53 / 4%);
+  backdrop-filter: blur(12px);
+}
+
+.topbar > span {
+  color: var(--navy-800);
+  font-size: .9rem;
+  font-weight: 600;
+  background: #f5f8f6;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid #e8eeea;
+}
+
+.content {
+  width: min(100%, 1500px);
+  margin: 0 auto;
+  padding: 38px 40px;
+  flex: 1;
+}
+
+/* Gitnang login at registration card para sa mga hindi pa naka-login. */
+.auth-page {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse at 12% 15%, rgb(107 204 162 / 20%), transparent 34%),
+    radial-gradient(ellipse at 90% 85%, rgb(41 119 97 / 25%), transparent 34%),
+    linear-gradient(135deg, #122a26, #245448);
+}
+
+.login-wrap {
+  width: min(100%, 480px);
+}
+
+.login-card {
+  position: relative;
+  overflow: hidden;
+  padding: 42px;
+  border: 1px solid rgb(255 255 255 / 78%);
+  border-radius: 22px;
+  background: rgb(255 255 255 / 98%);
+  box-shadow: 0 28px 80px rgb(8 35 28 / 30%);
+}
+
+.login-card::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  background: linear-gradient(90deg, #147d68, #70cba6);
+  content: "";
+}
+
+.login-card h1 {
+  margin: 0 0 6px;
+  color: var(--navy-950);
+  font-size: 1.8rem;
+  letter-spacing: -.04em;
+  line-height: 1.2;
+}
+
+.login-card > .muted {
+  margin-top: 0;
+}
+
+.login-card form {
+  display: grid;
+  gap: 10px;
+  margin: 28px 0 20px;
+}
+
+.login-card label {
+  margin-top: 5px;
+  color: #38564d;
+  font-size: .92rem;
+  font-weight: 650;
+}
+
+.login-card input {
+  min-height: 50px;
+  padding: 11px 14px;
+  border: 1px solid #dce7e1;
+  border-radius: 10px;
+  color: var(--ink);
+  background: #fbfdfb;
+  transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
+}
+
+.login-card input:focus {
+  border-color: var(--blue-600);
+  outline: 0;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgb(34 160 131 / 13%);
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  width: 100%;
+  padding-right: 52px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  color: #38564d;
+  background: transparent;
+  place-items: center;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.password-toggle:hover,
+.password-toggle:focus-visible {
+  background: #edf4f0;
+  outline: 0;
+}
+
+.eye-icon {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.login-card > p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: var(--blue-700);
+}
+
+a:hover {
+  color: #174e85;
+}
+
+/* Mga pamagat ng page at mga reusable na panel para sa buod at detalye. */
+.btn-block {
+  width: 100%;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 27px;
+}
+
+.page-header h2 {
+  margin: 0;
+  color: var(--navy-950);
+  font-size: clamp(1.65rem, 2.2vw, 2rem);
+  letter-spacing: -.045em;
+  line-height: 1.2;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.card {
+  padding: 25px;
+  border: 1px solid #e7eeea;
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.card:hover {
+  border-color: #dce8e1;
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-1px);
+}
+
+.stat {
+  display: grid;
+  position: relative;
+  min-height: 148px;
+  align-content: space-between;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.stat::after {
+  position: absolute;
+  right: -22px;
+  bottom: -34px;
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #e1f3eb 0%, #eff8f3 72%);
+  content: "";
+}
+
+.stat span {
+  position: relative;
+  z-index: 1;
+  color: var(--muted);
+  font-size: .9rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+}
+
+.stat strong {
+  position: relative;
+  z-index: 1;
+  color: var(--navy-900);
+  font-size: 2.4rem;
+  line-height: 1;
+  letter-spacing: -.04em;
+}
+
+/* Mga listahan at heading sa mga pangunahing content card. */
+.announcements-card h3 {
+  margin: 0 0 16px;
+}
+
+.announcements-card p {
+  margin: 10px 0 0;
+}
+
+.card + .card {
+  margin-top: 22px;
+}
+
+.card h3 {
+  margin: 0 0 19px;
+  color: var(--navy-900);
+  font-size: 1.12rem;
+  letter-spacing: -.015em;
+}
+
+.card-head,
+.page-header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.card-head {
+  margin-bottom: 16px;
+}
+
+.card-head h3 {
+  margin: 0;
+}
+
+.card-head input[type="search"] {
+  width: min(100%, 300px);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.form-field {
+  display: grid;
+  align-content: start;
+  gap: 7px;
+}
+
+.time-select-group {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+}
+
+.time-select-group > span {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.time-select-group select {
+  min-width: 0;
+}
+
+.form-field-wide,
+.form-actions {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  font-weight: 600;
+  color: #38564d;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+/* Mga field ng complaint status update at karaniwang form controls. */
+.complaint-update-form {
+  display: grid;
+  min-width: 190px;
+  gap: 8px;
+}
+
+.reservation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.reservation-actions form {
+  margin: 0;
+}
+
+.complaint-update-form select,
+.complaint-update-form textarea {
+  width: 100%;
+  min-height: 42px;
+  padding: 9px 11px;
+  border: 1px solid #dce7e1;
+  border-radius: 10px;
+  font: inherit;
+}
+
+.complaint-update-form textarea {
+  resize: vertical;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea,
+.card-head input[type="search"] {
+  width: 100%;
+  min-height: 47px;
+  padding: 10px 13px;
+  border: 1px solid #dce7e1;
+  border-radius: 10px;
+  color: var(--ink);
+  background: #fcfdfc;
+  font: inherit;
+  transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus,
+.card-head input[type="search"]:focus,
+.complaint-update-form select:focus,
+.complaint-update-form textarea:focus {
+  border-color: var(--blue-600);
+  outline: 0;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgb(34 160 131 / 12%);
+}
+
+.form-field textarea {
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Mga action button: default, pangunahing aksyon at mapanganib na aksyon. */
+.btn {
+  display: inline-flex;
+  min-height: 43px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: #fff;
+  background: var(--navy-900);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 140ms ease, transform 140ms ease, box-shadow 140ms ease;
+}
+
+.btn:hover {
+  background: var(--navy-800);
+  box-shadow: 0 6px 15px rgb(25 59 52 / 18%);
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--blue-700);
+  box-shadow: 0 4px 10px rgb(20 125 104 / 15%);
+}
+
+.btn-primary:hover {
+  background: #106a58;
+}
+
+.btn-danger {
+  background: #a61b1b;
+}
+
+.btn-danger:hover {
+  background: #7f1515;
+}
+
+.btn-small {
+  min-height: 32px;
+  padding: 6px 11px;
+  border-radius: 7px;
+  font-size: .9rem;
+}
+
+/* Pahalang na table container, header, row interaction at status badge. */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table thead th {
+  border-top: 0;
+}
+
+.table th,
+.table td {
+  padding: 13px 15px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.table th {
+  color: #557067;
+  background: #f3f7f4;
+  font-size: .86rem;
+  font-weight: 700;
+  letter-spacing: .015em;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.table tbody tr {
+  transition: background-color 120ms ease;
+}
+
+.table tbody tr:hover {
+  background: #f7fbf8;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: .85rem;
+  font-weight: 700;
+}
+
+.badge-pending {
+  color: #8a4b08;
+  background: #fff1d6;
+}
+
+.badge-unpaid {
+  color: #a61b1b;
+  background: #fde2e2;
+}
+
+.badge-paid {
+  color: #17643b;
+  background: #dcf5e6;
+}
+
+.badge-progress {
+  color: #214e9a;
+  background: #e2edff;
+}
+
+/* Balance summary, helper text, alert at announcement details. */
+.balance-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.balance-card div {
+  display: grid;
+  gap: 8px;
+}
+
+.balance-card strong {
+  color: var(--navy-900);
+  font-size: 2rem;
+  letter-spacing: -.035em;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.alert {
+  margin: 12px 0;
+  padding: 13px 15px;
+  border: 1px solid #f2caca;
+  border-radius: 11px;
+  color: #8f1d1d;
+  background: #fde2e2;
+}
+
+.alert-success {
+  border-color: #bfe7ce;
+  color: #17643b;
+  background: #dcf5e6;
+}
+
+.announcement-list {
+  display: grid;
+  gap: 16px;
+}
+
+.announcement-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.announcement-item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.announcement-item h4 {
+  margin: 0 0 8px;
+  color: var(--navy-900);
+  font-size: 1.04rem;
+}
+
+.announcement-item p {
+  margin: 0 0 8px;
+}
+
+.announcement-remove {
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .announcement-item {
+    grid-template-columns: 1fr;
+  }
+
+  .announcement-remove {
+    justify-self: start;
+  }
+}
+
+.profile-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+}
+
+.profile-details dt {
+  color: #526579;
+  font-size: .9rem;
+}
+
+.profile-details dd {
+  margin: 5px 0 0;
+  font-weight: 600;
+}
+
+.report-section h3 {
+  margin-bottom: 14px;
+}
+
+/* Mobile navigation control at malinaw na keyboard focus indicator. */
+.menu-btn {
+  display: none;
+  min-height: 40px;
+  padding: 8px 13px;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  background: var(--navy-900);
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgb(34 160 131 / 60%);
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  /* I-stack ang navigation at card controls sa tablet at mas maliit na viewport. */
+  .content {
+    padding: 26px 22px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .profile-details {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: fixed;
+    z-index: 2;
+    inset: 0 auto 0 0;
+    width: 270px;
+    transform: translateX(-100%);
+    transition: transform 160ms ease;
+  }
+
+  .sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  .menu-btn {
+    display: inline-block;
+  }
+
+  .topbar {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 13px 22px;
+  }
+
+  .card-head,
+  .page-header-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .card-head input[type="search"] {
+    width: 100%;
+  }
+
+  .topbar > span {
+    max-width: 100%;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 420px) {
+  /* Pasimplehin pa ang grids at padding sa makikitid na phone screen. */
+  .content {
+    padding: 16px;
+  }
+
+  .card {
+    padding: 19px;
+  }
+
+  .login-card {
+    padding: 32px 23px 26px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-field-wide,
+  .form-actions {
+    grid-column: auto;
+  }
+
+  .balance-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media print {
+  /* Itago ang mga kontrol sa papel at panatilihin ang card content na magkakasama. */
+  body {
+    background: #fff;
+  }
+
+  .sidebar,
+  .topbar,
+  .no-print {
+    display: none !important;
+  }
+
+  .content {
+    padding: 0;
+  }
+
+  .card {
+    break-inside: avoid;
+    box-shadow: none;
+  }
+}
